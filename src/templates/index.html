@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="welcome-message">
+        <h1>Добро пожаловать в Atom Chat</h1>
+        <button onclick="window.location.href='{% url 'auth_page' %}'">Войти</button>
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}

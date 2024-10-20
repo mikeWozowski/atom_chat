@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="auth-container">
+        <h1>Регистрация и Вход</h1>
+
+        <div class="auth-form">
+            <div id="register-form">
+                <h2>Регистрация</h2>
+                <form method="POST" action="{% url 'register_user' %}">
+                    {% csrf_token %}
+                    <label for="username">Логин:</label>
+                    <input type="text" name="username" id="username" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" required>
+
+                    <label for="password">Пароль:</label>
+                    <input type="password" name="password" id="password" required>
+
+                    <label for="password2">Повторите пароль:</label>
+                    <input type="password" name="password2" id="password2" required>
+
+                    <button type="submit">Регистрация</button>
+                </form>
+            </div>
+
+            <div id="login-form" style="display: none;">
+                <h2>Вход</h2>
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <label for="login-username">Логин:</label>
+                    <input type="text" name="login-username" id="login-username" required>
+
+                    <label for="login-password">Пароль:</label>
+                    <input type="password" name="login-password" id="login-password" required>
+
+                    <button type="submit">Войти</button>
+                </form>
+            </div>
+
+            <div>
+                <button id="toggle-form">Переключить на Вход</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/auth.js' %}"></script>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
